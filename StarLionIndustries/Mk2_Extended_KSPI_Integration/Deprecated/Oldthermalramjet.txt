@@ -1,0 +1,82 @@
+
+
+//thermal jet
+@PART[Mk2Ramjet]:NEEDS[WarpPlugin]:FIRST
+{
+	@title = NT-007 "Aftershave" Nuclear-Thermal Turbojet
+	@maxTemp = 2750
+	@description = Instead of a combustion chamber, this turbojet features a heat exchanger to heat and expel exhaust at high velocity. 
+	@TechRequired = improvedNuclearPropulsion
+	
+	@MODULE[ModuleEnginesFX]
+	{
+		@name = ModuleEngines//here
+		@engineAccelerationSpeed = .35
+		@engineDecelerationSpeed = 0.45
+		@useVelocityCurve = True
+		@EngineType = ScramJet
+		@maxThrust = 300
+		!PROPELLANT[LiquidFuel|Kerosene]
+		{
+		}
+		@PROPELLANT[IntakeAir]
+		{
+			@name = IntakeAtm
+			@ignoreForIsp = FALSE
+			@ratio = 1
+			%DrawGauge = True
+		}
+		// Jet params
+		!machLimit = NULL
+		!machHeatMult = NULL
+		!atmosphereCurve{}
+		!atmChangeFlow = NULL
+		!useVelCurve = NULL
+		!useAtmCurve = NULL
+		!velCurve{}
+		!atmCurve{}
+		
+		atmosphereCurve
+		{
+			key = 0 2000 0 0 
+		}
+		velocityCurve
+		{
+			key = 0 1 0 0
+			key = 400 0.8 0 0
+			key = 800 0.9 0 0
+			key = 1700 0 0 0
+		}
+	}
+	!MODULE[ModuleAlternator]{}
+	!RESOURCE[ElectricCharge]{}
+
+	MODULE
+	{
+		name = ThermalNozzleController
+		isJet = true
+		originalName = Atmospheric Thermal Jet
+		upgradedName = Hybrid Thermal Rocket
+		upgradeCost = 750
+		upgradeTechReq = aerospaceTech
+		radius = 1.561
+		exitArea = 2.04
+		powerTrustMultiplier = 1.5
+		IspTempMultOffset = -1.371670613
+		partMass = 0.3778
+		sootHeatDivider = 50
+		heatProductionMult = 5.5
+		emisiveConstantMult = 3
+		emisiveConstantExp = 0.6
+		maxTemp = 2750
+		baseHeatProduction = 26.54
+	}
+
+	RESOURCE
+	{
+		name = WasteHeat
+		amount = 0
+		maxAmount = 150000
+	}
+	!MODULE[ModuleSurfaceFX]{}
+}

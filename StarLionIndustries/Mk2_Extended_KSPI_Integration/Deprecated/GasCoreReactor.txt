@@ -1,0 +1,82 @@
++PART[M2X_Reactor]:FOR[mk2_generator]:NEEDS[WarpPlugin]
+{
+	@name = M2X_Reactor_GasCore
+	@mass = 2.81
+	@TechRequired = largeNuclearPower
+	@cost = 64188
+	@title = Nuk-1 Aircraft Gas Core Reactor
+	@description = Due to the significant thrust drop due to the bouyancy of the gas, this reactor is better suited to rovers or bases, or operations only outside of gravity wells.
+	
+	!RESOURCE[DepletedFuel]{}
+	!RESOURCE[EnrichedUranium]{}
+	!RESOURCE[ElectricCharge]{}
+	!MODULE[ModuleResourceConverter]{}
+	
+	MODULE
+	{
+		name = InterstellarFissionMSRGC
+		ReactorTemp = 8849.00
+		PowerOutput = 780.5
+		PowerOutputExponent = 3.2
+		upgradedReactorTemp = 17698.00
+		upgradedPowerOutput = 1170.75
+		upgradedPowerOutputExponent = 3.2
+		originalName = Gas Core Reactor Mk1
+		upgradedName = Gas Core Reactor Mk2
+		upgradeTechReq = advNuclearPower
+		upgradeCost = 150
+		radius = 1.561
+		minimumThrottle = 0.1
+		consumeGlobal = false
+		reactorType = 1
+		upgradedReactorType = 16
+		fuelEfficiency = 0.1584
+		upgradedFuelEfficiency = 0.264
+		partMass = 1.38
+		heatTransportationEfficiency = 0.95
+		bonusBufferFactor = 1
+		powerUpgradeTechReq = highEnergyScience
+		powerUpgradeTechMult = 1.5
+		powerUpgradeCoreTempMult = 2.0
+		neutronEmbrittlementLifepointsMax = 100
+		maxGeeForceFuelInput = 1
+		minGeeForceModifier = 0.1
+	}
+	
+	RESOURCE
+	{
+		name = ThermalPower
+		amount = 0
+		maxAmount = 80
+	}
+	RESOURCE
+	{
+		name = WasteHeat
+		amount = 0
+		maxAmount = 160000
+	}
+	RESOURCE
+	{
+		name = EnrichedUranium
+		amount = 150
+		maxAmount = 150
+	}
+	RESOURCE
+	{
+		name = ThF4
+		amount = 0
+		maxAmount = 150
+	}
+	RESOURCE
+	{
+		name = Actinides
+		amount = 0
+		maxAmount = 150
+	}
+	RESOURCE
+	{
+		name = Lithium
+		amount = 0
+		maxAmount = 100
+	}
+}
