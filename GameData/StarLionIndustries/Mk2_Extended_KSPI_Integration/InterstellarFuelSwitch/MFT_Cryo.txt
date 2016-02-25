@@ -1,0 +1,204 @@
+@PART[*]:HAS[@MODULE[ModuleFuelTanks],!MODULE[FNModuleCryostat],!MODULE[InterstellarFuelSwitch]]:NEEDS[InterstellarFuelSwitch]:AFTER[WarpPlugin]
+{
+	%percentage = 0
+	%percentsquared = 0
+	@percentage = #$/MODULE[ModuleFuelTanks]/volume$
+	@percentage /= 26880
+	@percentage != 0.3333333
+	@percentsquared = #$/percentage$
+	@percentsquared != 2
+	
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdAmmonia
+		resourceGUIName = Ammonia
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 239.81
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdCO2
+		resourceGUIName = Carbon Dioxide
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 220
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdCO
+		resourceGUIName = Carbon Monoxide
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 81.65
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdDeuterium
+		resourceGUIName = Deuterium
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 20.271
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdHe3
+		resourceGUIName = Helium-3
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 4.222
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdHelium
+		resourceGUIName = Helium-4
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 4.222
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+	
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = Hexaborane
+		resourceGUIName = Hexaborane
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 180.65
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdHydrogen
+		resourceGUIName = Hydrogen
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 20.271
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = HTP
+		resourceGUIName = Hydrogen Peroxide
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 220
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdMethane
+		resourceGUIName = Methane
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 111.66
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdNitrogen
+		resourceGUIName = Nitrogen
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 77.355
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdOxygen
+		resourceGUIName = Oxygen
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 90.188
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = LqdTritium
+		resourceGUIName = Tritium
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 20.271
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+
+	MODULE
+	{
+		name = FNModuleCryostat
+		resourceName = XenonGas
+		resourceGUIName = Xenon
+		powerReqKW = 45
+		boilOffRate = 0
+		boilOffTemp = 165.051
+		boilOffMultiplier = 1
+		boilOffBase = 16000
+		boilOffAddition = 8.97215e-5
+	}
+	
+	@MODULE[FNModuleCryostat],*
+	{
+		@boilOffMultiplier *= #$../percentage$
+		@powerReqKW *= #$/percentsquared$
+		@boilOffRate *= #$/percentsquared$
+	}
+}
+
+@PART[*]:HAS[@MODULE[ModuleFuelTanks],@MODULE[FNModuleCryostat]]:NEEDS[InterstellarFuelSwitch]:AFTER[WarpPlugin]
+{
+	!percentage = NULL
+	!percentsquared = NULL
+}
